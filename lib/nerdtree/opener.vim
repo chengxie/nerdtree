@@ -266,9 +266,9 @@ function! s:Opener._previousWindow()
     else
         try
             if !self._isWindowUsable(winnr('#'))
-                call nerdtree#exec(self._firstUsableWindow() . 'wincmd w', 1)
+                call nerdtree#exec(self._firstUsableWindow() . 'wincmd w', 0)
             else
-                call nerdtree#exec('wincmd p', 1)
+                call nerdtree#exec('wincmd p', 0)
             endif
         catch /^Vim\%((\a\+)\)\=:E37/
             call g:NERDTree.CursorToTreeWin()
