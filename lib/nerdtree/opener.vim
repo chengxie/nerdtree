@@ -163,8 +163,8 @@ function! s:Opener._newSplit()
 
     " Open the new window
     try
-        call nerdtree#exec('wincmd p', 1)
-        call nerdtree#exec(splitMode . ' split',1)
+        call nerdtree#exec('wincmd p', 0)
+        call nerdtree#exec(splitMode . ' split', 0)
     catch /^Vim\%((\a\+)\)\=:E37/
         call g:NERDTree.CursorToTreeWin()
         throw 'NERDTree.FileAlreadyOpenAndModifiedError: '. self._path.str() .' is already open and modified.'
@@ -282,7 +282,7 @@ endfunction
 " FUNCTION: Opener._restoreCursorPos() {{{1
 function! s:Opener._restoreCursorPos()
     call nerdtree#exec(self._tabnr . 'tabnext', 1)
-    call nerdtree#exec(bufwinnr(self._bufnr) . 'wincmd w', 1)
+    call nerdtree#exec(bufwinnr(self._bufnr) . 'wincmd w', 0)
 endfunction
 
 " FUNCTION: Opener._reuseWindow() {{{1
